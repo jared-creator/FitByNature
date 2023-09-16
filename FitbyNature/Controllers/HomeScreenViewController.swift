@@ -23,35 +23,38 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
+        self.table.refreshControl = nil
+        table.bounces = false
+        table.refreshControl?.removeFromSuperview()
         let foodInfo = fetchedFoods[indexPath.row]
-        
+        print(foodInfo.caloriesLeft)
         let currentDate = Date()
         
         var calender = Calendar.current
         calender.timeZone = TimeZone.current
         let result = calender.compare(foodInfo.time!, to: currentDate, toGranularity: .day)
         let isSameDay = result == .orderedSame
-        print(isSameDay)
         
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .none
-        let foodDate = formatter.date(from: "\(String(describing: foodInfo.time))")
-        let currentDateToCompare = formatter.date(from: "\(currentDate)")
+        _ = formatter.date(from: "\(String(describing: foodInfo.time))")
+        _ = formatter.date(from: "\(currentDate)")
     
         if isSameDay == true {
             let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-            
+                        
             totalCalories += foodInfo.calories
-            print(totalCalories)
-            var caloriesLeft = caloriesLeft()
+               
+            let caloriesLeft = caloriesLeft()
             foodInfo.caloriesLeft = caloriesLeft
-            print(caloriesLeft)
+            print("This is what calories are left:\(caloriesLeft)")
             
             caloriesLeftLabel.text = String("\(foodInfo.caloriesLeft) calories left for today")
             cell.calLabel.text = String(foodInfo.calories)
             cell.foodLabel.text = foodInfo.name?.capitalized
             cell.timeLabel.text = formatter.string(from: foodInfo.time!)
+            handleTap(is: false)
             return cell
         } else {
             let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
@@ -59,6 +62,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
     }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -71,14 +75,22 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let foodToRemove = self.fetchedFoods[indexPath.row]
+            print(foodToRemove)
+            
             totalCalories -= foodToRemove.calories
+            print("Total calories when deleted pressed:\(foodToRemove.calories)")
+            print("This is the total calories within the delete function \(totalCalories)")
+            
             CoreDataManager.shared.context.delete(foodToRemove)
             CoreDataManager.shared.save()
             fetchedFoods.remove(at: indexPath.row)
             table.deleteRows(at: [indexPath], with: .left)
+            
             if fetchedFoods.isEmpty {
                 caloriesLeftLabel.text = String("\(CoreDataManager.shared.stats![0].calories) calories left for today")
+                handleTap(is: true)
             }
+            totalCalories = 0
             self.table.reloadData()
         }
     }
@@ -96,18 +108,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         addSubViews()
         table.delegate = self
         table.dataSource = self
-        
+        table.refreshControl = nil
         CoreDataManager.shared.fetchUser()
         caloriesLeftLabel.text = String("\(CoreDataManager.shared.stats![0].calories) calories left for today")
         fetchedFoods = CoreDataManager.shared.fetchFood()
     }
     
-    let calorieCircle = CAShapeLayer()
+    
     
     func caloriesLeft() -> Int64 {
         let caloriesLeft = CoreDataManager.shared.stats![0].calories - Int64(totalCalories)
         return caloriesLeft
     }
+    
+    let calorieCircle = CAShapeLayer()
     
     func addSubViews() {
         let center = view.center
@@ -136,7 +150,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         calorieCircle.strokeEnd = 0
         
         view.layer.addSublayer(calorieCircle)
-                
+        
         
         let view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 146, height: 39)
@@ -158,18 +172,32 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-//    @objc private func handleTap() {
-//        print("Attempting to animate stroke")
-//
-//        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-//
-//        basicAnimation.toValue = 1
-//        
-//        basicAnimation.duration = 2
-//
-//        basicAnimation.fillMode = .forwards
-//        basicAnimation.isRemovedOnCompletion = false
-//
-//        calorieCircle.add(basicAnimation, forKey: "urSoBasic")
-//    }
+    @objc private func handleTap(is reverse: Bool) {
+        calorieCircle.removeAllAnimations()
+        
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        
+        let currentCalories = (totalCalories) / Double(CoreDataManager.shared.stats![0].calories)
+        
+        basicAnimation.duration = 1
+        
+        if reverse == false {
+            
+            basicAnimation.toValue = currentCalories
+            basicAnimation.fillMode = .forwards
+            basicAnimation.isRemovedOnCompletion = false
+            
+            calorieCircle.add(basicAnimation, forKey: "urSoBasic")
+            
+        } else {
+            
+            basicAnimation.toValue = currentCalories
+            basicAnimation.fromValue = currentCalories
+            basicAnimation.fillMode = .backwards
+            basicAnimation.isRemovedOnCompletion = false
+            
+            calorieCircle.add(basicAnimation, forKey: "animation")
+            
+        }
+    }
 }

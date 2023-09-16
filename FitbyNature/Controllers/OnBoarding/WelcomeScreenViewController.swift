@@ -38,7 +38,7 @@ class WelcomeScreenViewController: UIViewController {
         welcomeLabel.numberOfLines = 0
         welcomeLabel.lineBreakMode = .byWordWrapping
         welcomeLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 50)
-        welcomeLabel.text = "Welcome to Fitbynature"
+        welcomeLabel.text = "Welcome to FitByNature"
         welcomeLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
    
         parent.addSubview(welcomeLabel)
