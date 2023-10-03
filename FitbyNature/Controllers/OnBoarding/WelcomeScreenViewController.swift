@@ -13,28 +13,28 @@ class WelcomeScreenViewController: UIViewController {
         super.viewDidLoad()
         
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 380.32, height: 230.36)
-        let image0 = UIImage(named: "istockphoto-1165399909-612x612 1")?.cgImage
-        let layer0 = CALayer()
-        layer0.contents = image0
-        layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1, b: 0, c: 0, d: 1.1, tx: 0, ty: -0.05))
-        layer0.bounds = view.bounds
-        layer0.position = view.center
-        view.layer.addSublayer(layer0)
+        let parent = self.view!
         
+        //Image view
+        let imageName = "istockphoto-1165399909-612x612 1"
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        view.addSubview(imageView)
+        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 400).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         view.layer.cornerRadius = 49
         
-        let parent = self.view!
+        
         parent.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.widthAnchor.constraint(equalToConstant: 380.32).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 230.36).isActive = true
-        view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 24.68).isActive = true
-        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: 195).isActive = true
         
-        
+        //Welcome Label
         let welcomeLabel = UILabel()
-        welcomeLabel.frame = CGRect(x: 0, y: 0, width: 292, height: 118)
+        
+        welcomeLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 118)
         welcomeLabel.numberOfLines = 0
         welcomeLabel.lineBreakMode = .byWordWrapping
         welcomeLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 50)
@@ -42,13 +42,14 @@ class WelcomeScreenViewController: UIViewController {
         welcomeLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
    
         parent.addSubview(welcomeLabel)
+        
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        welcomeLabel.widthAnchor.constraint(equalToConstant: 292).isActive = true
+        welcomeLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         welcomeLabel.heightAnchor.constraint(equalToConstant: 118).isActive = true
         welcomeLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 24).isActive = true
-        welcomeLabel.topAnchor.constraint(equalTo: parent.topAnchor, constant: 517).isActive = true
+        welcomeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20).isActive = true
         
-        
+        //Qoute Label
         let quoteLabel = UILabel()
         quoteLabel.frame = CGRect(x: 0, y: 0, width: 226, height: 53)
         quoteLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4-Heavy", size: 20)
@@ -62,21 +63,21 @@ class WelcomeScreenViewController: UIViewController {
         quoteLabel.translatesAutoresizingMaskIntoConstraints = false
         quoteLabel.widthAnchor.constraint(equalToConstant: 226).isActive = true
         quoteLabel.heightAnchor.constraint(equalToConstant: 53).isActive = true
-        quoteLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 78).isActive = true
-        quoteLabel.topAnchor.constraint(equalTo: parent.topAnchor, constant: 647).isActive = true
+        quoteLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 50).isActive = true
+        quoteLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 5).isActive = true
         
+        //Continue Button
         let continueButton = UIButton()
-        continueButton.frame = CGRect(x: 0, y: 0, width: 168, height: 64)
         continueButton.setTitle("Get Started!", for: .normal)
         StyleGuide.styleFilledButton(continueButton)
         continueButton.addTarget(self, action: #selector(segueToNextScreen), for: .touchUpInside)
-        
         parent.addSubview(continueButton)
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         continueButton.widthAnchor.constraint(equalToConstant: 168).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        continueButton.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 130).isActive = true
-        continueButton.topAnchor.constraint(equalTo: parent.topAnchor, constant: 791).isActive = true
+        continueButton.leadingAnchor.constraint(equalTo: parent.centerXAnchor, constant: -90).isActive = true
+        continueButton.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 50).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -50).isActive = true
 
     }
     
