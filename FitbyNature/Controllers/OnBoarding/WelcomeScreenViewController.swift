@@ -24,7 +24,7 @@ class WelcomeScreenViewController: UIViewController {
         view.addSubview(imageView)
         imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 100).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 400).isActive = true
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         view.layer.cornerRadius = 49
         
