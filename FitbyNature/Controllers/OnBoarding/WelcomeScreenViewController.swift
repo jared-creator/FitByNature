@@ -9,76 +9,108 @@ import UIKit
 
 class WelcomeScreenViewController: UIViewController {
     
+    var parentStackView = UIStackView()
+    var secondaryStackView = UIStackView()
+    var imageView = UIImageView()
+    var welcomeLabel = UILabel()
+    var qouteLabel = UILabel()
+    var continueButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let view = UIView()
-        let parent = self.view!
-        
-        //Image view
-        let imageName = "istockphoto-1165399909-612x612 1"
-        let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
+        configureParentStackView()
+        setParentStackViewConstraints()
+        addViewsToParentStackView()
+        configureImageView()
+        configureWelcomeLabel()
+        configureQouteLabel()
+        configureContinueButton()
+    }
+    
+    func configureParentStackView() {
+        view.addSubview(parentStackView)
+        parentStackView.axis = .vertical
+        parentStackView.distribution = .fill
+        parentStackView.spacing = 75
+    }
+    
+    func addViewsToParentStackView() {
+        parentStackView.addArrangedSubview(imageView)
+        parentStackView.addArrangedSubview(welcomeLabel)
+        parentStackView.addArrangedSubview(qouteLabel)
+        parentStackView.addArrangedSubview(continueButton)
+    }
+    
+    func setParentStackViewConstraints() {
+        parentStackView.translatesAutoresizingMaskIntoConstraints = false
+        parentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        parentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        parentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        parentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+    }   
+    
+    func configureImageView() {
+        imageView.image = UIImage(named: "istockphoto-1165399909-612x612 1")
+        setImageViewConstraint()
+    }
+
+    func setImageViewConstraint() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
-        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 400).isActive = true
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        view.layer.cornerRadius = 49
-        
-        
-        parent.addSubview(view)
-        
-        //Welcome Label
-        let welcomeLabel = UILabel()
-        
-        welcomeLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 118)
+        imageView.widthAnchor.constraint(equalToConstant: view.frame.width - 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: view.frame.height - 400).isActive = true
+        imageView.topAnchor.constraint(equalTo: parentStackView.safeAreaLayoutGuide.topAnchor, constant: -300).isActive = true
+        imageView.layer.cornerRadius = 49
+    }
+    
+    func configureWelcomeLabel() {
         welcomeLabel.numberOfLines = 0
         welcomeLabel.lineBreakMode = .byWordWrapping
-        welcomeLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 50)
+        welcomeLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 45)
         welcomeLabel.text = "Welcome to FitByNature"
         welcomeLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
-   
-        parent.addSubview(welcomeLabel)
-        
+
+        setWelcomeLabelConstraint()
+    }
+
+    func setWelcomeLabelConstraint() {
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         welcomeLabel.heightAnchor.constraint(equalToConstant: 118).isActive = true
-        welcomeLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 24).isActive = true
-        welcomeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20).isActive = true
+        welcomeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24).isActive = true
+        welcomeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -200).isActive = true
+    }
+    func configureQouteLabel() {
+        qouteLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4-Heavy", size: 20)
+        qouteLabel.numberOfLines = 0
+        qouteLabel.lineBreakMode = .byWordWrapping
+        qouteLabel.textAlignment = .center
+        qouteLabel.text = "The quickest way to success is to start"
+        qouteLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
         
-        //Qoute Label
-        let quoteLabel = UILabel()
-        quoteLabel.frame = CGRect(x: 0, y: 0, width: 226, height: 53)
-        quoteLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4-Heavy", size: 20)
-        quoteLabel.numberOfLines = 0
-        quoteLabel.lineBreakMode = .byWordWrapping
-        quoteLabel.textAlignment = .center
-        quoteLabel.text = "The quickest way to success is to start"
-        quoteLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
-        
-        parent.addSubview(quoteLabel)
-        quoteLabel.translatesAutoresizingMaskIntoConstraints = false
-        quoteLabel.widthAnchor.constraint(equalToConstant: 226).isActive = true
-        quoteLabel.heightAnchor.constraint(equalToConstant: 53).isActive = true
-        quoteLabel.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 50).isActive = true
-        quoteLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 5).isActive = true
-        
-        //Continue Button
-        let continueButton = UIButton()
+        setQouteLabelConstraints()
+    }
+    
+    func setQouteLabelConstraints() {
+        qouteLabel.translatesAutoresizingMaskIntoConstraints = false
+        qouteLabel.widthAnchor.constraint(equalToConstant: 226).isActive = true
+        qouteLabel.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        qouteLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25).isActive = true
+        qouteLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: -20).isActive = true
+    }
+    
+    func configureContinueButton() {
         continueButton.setTitle("Get Started!", for: .normal)
         StyleGuide.styleFilledButton(continueButton)
         continueButton.addTarget(self, action: #selector(segueToNextScreen), for: .touchUpInside)
-        parent.addSubview(continueButton)
+
+        setContinueButtonConstraint()
+    }
+
+    func setContinueButtonConstraint() {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         continueButton.widthAnchor.constraint(equalToConstant: 168).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        continueButton.leadingAnchor.constraint(equalTo: parent.centerXAnchor, constant: -90).isActive = true
-        continueButton.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 50).isActive = true
-        continueButton.bottomAnchor.constraint(equalTo: parent.bottomAnchor, constant: -50).isActive = true
-
     }
     
     @objc func segueToNextScreen() {
