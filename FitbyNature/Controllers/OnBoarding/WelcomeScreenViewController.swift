@@ -9,8 +9,7 @@ import UIKit
 
 class WelcomeScreenViewController: UIViewController {
     
-    var parentStackView = UIStackView()
-    var secondaryStackView = UIStackView()
+    var stackView = UIStackView()
     var imageView = UIImageView()
     var welcomeLabel = UILabel()
     var qouteLabel = UILabel()
@@ -18,35 +17,35 @@ class WelcomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureParentStackView()
-        setParentStackViewConstraints()
-        addViewsToParentStackView()
+        configureStackView()
+        setStackViewConstraints()
+        addViewsToStackView()
         configureImageView()
         configureWelcomeLabel()
         configureQouteLabel()
         configureContinueButton()
     }
     
-    func configureParentStackView() {
-        view.addSubview(parentStackView)
-        parentStackView.axis = .vertical
-        parentStackView.distribution = .fill
-        parentStackView.spacing = 75
+    func configureStackView() {
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 20
     }
     
-    func addViewsToParentStackView() {
-        parentStackView.addArrangedSubview(imageView)
-        parentStackView.addArrangedSubview(welcomeLabel)
-        parentStackView.addArrangedSubview(qouteLabel)
-        parentStackView.addArrangedSubview(continueButton)
+    func addViewsToStackView() {
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(welcomeLabel)
+        stackView.addArrangedSubview(qouteLabel)
+        stackView.addArrangedSubview(continueButton)
     }
     
-    func setParentStackViewConstraints() {
-        parentStackView.translatesAutoresizingMaskIntoConstraints = false
-        parentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        parentStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        parentStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-        parentStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+    func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }   
     
     func configureImageView() {
@@ -57,9 +56,6 @@ class WelcomeScreenViewController: UIViewController {
     func setImageViewConstraint() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.widthAnchor.constraint(equalToConstant: view.frame.width - 100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: view.frame.height - 400).isActive = true
-        imageView.topAnchor.constraint(equalTo: parentStackView.safeAreaLayoutGuide.topAnchor, constant: -300).isActive = true
         imageView.layer.cornerRadius = 49
     }
     
@@ -69,17 +65,8 @@ class WelcomeScreenViewController: UIViewController {
         welcomeLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 45)
         welcomeLabel.text = "Welcome to FitByNature"
         welcomeLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
-
-        setWelcomeLabelConstraint()
     }
 
-    func setWelcomeLabelConstraint() {
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        welcomeLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        welcomeLabel.heightAnchor.constraint(equalToConstant: 118).isActive = true
-        welcomeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24).isActive = true
-        welcomeLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -200).isActive = true
-    }
     func configureQouteLabel() {
         qouteLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4-Heavy", size: 20)
         qouteLabel.numberOfLines = 0
@@ -87,16 +74,6 @@ class WelcomeScreenViewController: UIViewController {
         qouteLabel.textAlignment = .center
         qouteLabel.text = "The quickest way to success is to start"
         qouteLabel.textColor = UIColor(red: 131/255, green: 81/255, blue: 81/255, alpha: 1)
-        
-        setQouteLabelConstraints()
-    }
-    
-    func setQouteLabelConstraints() {
-        qouteLabel.translatesAutoresizingMaskIntoConstraints = false
-        qouteLabel.widthAnchor.constraint(equalToConstant: 226).isActive = true
-        qouteLabel.heightAnchor.constraint(equalToConstant: 53).isActive = true
-        qouteLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25).isActive = true
-        qouteLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: -20).isActive = true
     }
     
     func configureContinueButton() {
@@ -109,7 +86,6 @@ class WelcomeScreenViewController: UIViewController {
 
     func setContinueButtonConstraint() {
         continueButton.translatesAutoresizingMaskIntoConstraints = false
-        continueButton.widthAnchor.constraint(equalToConstant: 168).isActive = true
         continueButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
     }
     
