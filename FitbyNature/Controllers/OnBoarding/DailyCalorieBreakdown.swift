@@ -9,35 +9,54 @@ import UIKit
 
 class DailyCalorieBreakdown: UIViewController {
         
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var continueButton: UIButton!
-    
-    
+    var stackView = UIStackView()
+    var imageView = UIImageView()
+    var textView = UITextView()
+    var continueButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = UIView()
-        let parent = self.view!
-        
-        //Image view
-        let imageName = "istockphoto-1148608353-612x612 1"
-        let image = UIImage(named: imageName)
-        let imageView = UIImageView(image: image!)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        configureStackView()
+        setStackViewConstraints()
+        addViewsToStackView()
+        configureImageView()
+        configureTextView()
+        configureContinueButton()
+    }
+    
+    func configureStackView() {
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 100
+        stackView.setCustomSpacing(20, after: textView)
+    }
+    
+    func addViewsToStackView() {
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(textView)
+        stackView.addArrangedSubview(continueButton)
+    }
+    
+    func setStackViewConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func configureImageView() {
+        imageView.image = UIImage(named: "istockphoto-1148608353-612x612 1")
+        setImageViewConstraints()
+    }
+    
+    func setImageViewConstraints() {
         imageView.contentMode = .scaleAspectFit
-        
-        view.addSubview(imageView)
-        
-        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 400).isActive = true
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        view.layer.cornerRadius = 49
-        
-        
-        parent.addSubview(view)
-        
-        let textView = UITextView()
+        imageView.layer.cornerRadius = 49
+    }
+    
+    func configureTextView() {
         textView.contentInsetAdjustmentBehavior = .automatic
         textView.center = self.view.center
         textView.textAlignment = NSTextAlignment.justified
@@ -47,19 +66,16 @@ class DailyCalorieBreakdown: UIViewController {
         textView.backgroundColor = UIColor(red: 255/255, green: 232/255, blue: 212/255, alpha: 1)
         textView.isEditable = false
         textView.isSelectable = false
-        
-        parent.addSubview(textView)
-
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30).isActive = true
-        textView.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 0).isActive = true
-        textView.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: 0).isActive = true
-        textView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        textView.heightAnchor.constraint(equalToConstant: 125).isActive = true
-        
-        continueButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 70).isActive = true
-        
+    }
+    
+    func configureContinueButton() {
+        continueButton.setTitle("Continue", for: .normal)
+        continueButton.addTarget(self, action: #selector(segueToNextScreen), for: .touchUpInside)
         StyleGuide.styleFilledButton(continueButton)
+    }
+
+    @objc func segueToNextScreen() {
+        performSegue(withIdentifier: "toCalorieSelection", sender: self)
     }
     
     struct DailyCalorieExplanation {
