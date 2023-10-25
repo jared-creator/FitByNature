@@ -10,8 +10,9 @@ import UIKit
 class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: TableView
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var caloriesLeftLabel: UILabel!
     
     var menu: [FoodMacros] = []
     var fetchedFoods: [Food] = []
@@ -105,7 +106,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
+        addViewsToStackView()
+        configureTodayLabel()
+        configureCaloriesLeftLabel()
+        configureCalorieCircle()
         table.delegate = self
         table.dataSource = self
         table.refreshControl = nil
@@ -115,30 +119,30 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    
     func caloriesLeft() -> Int64 {
         let caloriesLeft = CoreDataManager.shared.stats![0].calories - Int64(totalCalories)
         return caloriesLeft
     }
     
+    let trackLayer = CAShapeLayer()
     let calorieCircle = CAShapeLayer()
+    var todayLabel = UILabel()
+    var caloriesLeftLabel = UILabel()
     
-    func addSubViews() {
-        let center = view.center
+    func configureCalorieCircle() {
         
         //create track layer
         let trackLayer = CAShapeLayer()
-        trackLayer.position = CGPoint(x: view.bounds.minX, y: view.bounds.midY - 750)
-        calorieCircle.position = CGPoint(x: view.bounds.minX, y: view.bounds.midY - 750)
         
-        let circularPath = UIBezierPath(arcCenter: center, radius: 25, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        
+        let circularPath = UIBezierPath(arcCenter: view.center, radius: 25, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
         
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = 10
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
-        view.layer.addSublayer(trackLayer)
+        stackView.layer.addSublayer(trackLayer)
         
         calorieCircle.path = circularPath.cgPath
         
@@ -149,27 +153,40 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         
         calorieCircle.strokeEnd = 0
         
-        view.layer.addSublayer(calorieCircle)
+        stackView.layer.addSublayer(calorieCircle)
+        trackLayer.position = CGPoint(x: stackView.frame.width / 16, y: stackView.frame.height)
+        calorieCircle.position = CGPoint(x: todayLabel.frame.origin.x, y: todayLabel.frame.origin.y)
+    }
+    
+    func addViewsToStackView() {
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 70
+        stackView.addArrangedSubview(todayLabel)
+        stackView.addArrangedSubview(caloriesLeftLabel)
         
-        
-        let view = UILabel()
-        view.frame = CGRect(x: 0, y: 0, width: 146, height: 39)
-        view.textColor = UIColor(red: 0.514, green: 0.318, blue: 0.318, alpha: 1)
-        view.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 30)
+    }
+    
+    func configureTodayLabel() {
+        todayLabel.frame = CGRect(x: 0, y: 0, width: 146, height: 39)
+        todayLabel.textColor = UIColor(red: 0.514, green: 0.318, blue: 0.318, alpha: 1)
+        todayLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 30)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 0.76
-        view.textAlignment = .center
-        view.attributedText = NSMutableAttributedString(string: "Today", attributes: [NSAttributedString.Key.kern: -0.41, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-
-        let parent = self.view!
-        parent.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.widthAnchor.constraint(equalToConstant: 146).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 39).isActive = true
-        view.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 170).isActive = true
-        view.topAnchor.constraint(equalTo: parent.topAnchor, constant: 70).isActive = true
-        
-        
+        todayLabel.textAlignment = .center
+        todayLabel.attributedText = NSMutableAttributedString(string: "Today", attributes: [NSAttributedString.Key.kern: -0.41, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+    }
+    
+    func configureCaloriesLeftLabel() {
+        caloriesLeftLabel.textColor = .black
+        caloriesLeftLabel.font = UIFont(name: "Hiragino Maru Gothic ProN W4", size: 12)
+        caloriesLeftLabel.textAlignment = .center
+        caloriesLeftLabel.heightAnchor.constraint(equalToConstant: 10).isActive = true
+    }
+    
+    func setNavigationBarConstraints() {
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40).isActive = true
     }
     
     @objc private func handleTap(is reverse: Bool) {
