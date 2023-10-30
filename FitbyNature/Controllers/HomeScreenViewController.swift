@@ -130,19 +130,17 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     var caloriesLeftLabel = UILabel()
     
     func configureCalorieCircle() {
-        
         //create track layer
-        let trackLayer = CAShapeLayer()
-        
+//        let trackLayer = CAShapeLayer()
         
         let circularPath = UIBezierPath(arcCenter: view.center, radius: 25, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
-        
+
         trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = 10
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
-        stackView.layer.addSublayer(trackLayer)
+//        stackView.layer.addSublayer(trackLayer)
         
         calorieCircle.path = circularPath.cgPath
         
@@ -152,17 +150,34 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         calorieCircle.lineCap = .butt
         
         calorieCircle.strokeEnd = 0
+    }
+    
+    let gradientLayer: CAShapeLayer = {
+        let trackLayer = CAShapeLayer()
+        let view = UIView()
         
-        stackView.layer.addSublayer(calorieCircle)
-        trackLayer.position = CGPoint(x: stackView.frame.width / 16, y: stackView.frame.height)
-        calorieCircle.position = CGPoint(x: todayLabel.frame.origin.x, y: todayLabel.frame.origin.y)
+        let circularPath = UIBezierPath(arcCenter: view.center, radius: 25, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+        trackLayer.path = circularPath.cgPath
+
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
+        trackLayer.lineWidth = 10
+        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.lineCap = .round
+            return trackLayer
+        }()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = CGRect(x: stackView.frame.midX, y: stackView.frame.midY, width: 0, height: 0)
+//        gradientLayer.frame = stackView.bounds
     }
     
     func addViewsToStackView() {
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 70
+        stackView.spacing = 90
         stackView.addArrangedSubview(todayLabel)
+        stackView.layer.addSublayer(gradientLayer)
         stackView.addArrangedSubview(caloriesLeftLabel)
         
     }
