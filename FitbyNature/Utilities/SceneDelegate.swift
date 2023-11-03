@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -18,13 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var vc: UIViewController
         
         if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
             vc = storyboard.instantiateViewController(withIdentifier: "OnBoardingVC")
         } else {
-            vc = storyboard.instantiateInitialViewController()!
+            vc = UIHostingController(rootView: HomeScreen().environment(\.managedObjectContext, context))
+//            vc = storyboard.instantiateInitialViewController()!
         }
         
         window?.rootViewController = vc

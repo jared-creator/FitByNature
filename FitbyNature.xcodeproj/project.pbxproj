@@ -19,6 +19,7 @@
 		9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E04892A53CFC300379104 /* ResponseModels.swift */; };
 		9B6E048C2A53CFCF00379104 /* MacroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E048B2A53CFCF00379104 /* MacroController.swift */; };
 		9B6E048E2A53D1FB00379104 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */; };
+		9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AD3342AF077A5008DB059 /* HomeScreen.swift */; };
 		9B89E5FC2A7331F000CDEE04 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */; };
 		9B9016512A060C1A00EE580C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9016502A060C1A00EE580C /* AppDelegate.swift */; };
 		9B9016532A060C1A00EE580C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9016522A060C1A00EE580C /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		9B6E04892A53CFC300379104 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		9B6E048B2A53CFCF00379104 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
 		9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		9B7AD3342AF077A5008DB059 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		9B90164D2A060C1A00EE580C /* prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9016502A060C1A00EE580C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				9B1F2A572A5BAF4A00795022 /* OnBoarding */,
 				9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */,
+				9B7AD3342AF077A5008DB059 /* HomeScreen.swift */,
 				9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */,
 				9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */,
 				9B64762C2A734A9D0001036A /* FoodSearchTableViewCell.swift */,
@@ -298,6 +301,7 @@
 				9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */,
 				9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */,
 				9B20B5982A12DF0D001BCAB9 /* StyleGuide.swift in Sources */,
+				9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */,
 				9BB30B7F2A6E134200FD49D6 /* FoodSearchViewController.swift in Sources */,
 				9B1077602A70691F00721ACA /* CoreDataManager.swift in Sources */,
 				9B9016532A060C1A00EE580C /* SceneDelegate.swift in Sources */,
@@ -499,7 +503,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,7 +532,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

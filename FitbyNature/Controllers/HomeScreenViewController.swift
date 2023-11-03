@@ -49,7 +49,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
                
             let caloriesLeft = caloriesLeft()
             foodInfo.caloriesLeft = caloriesLeft
-            print("This is what calories are left:\(caloriesLeft)")
             
             caloriesLeftLabel.text = String("\(foodInfo.caloriesLeft) calories left for today")
             cell.calLabel.text = String(foodInfo.calories)

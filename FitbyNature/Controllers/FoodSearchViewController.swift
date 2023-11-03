@@ -6,14 +6,35 @@
 //
 
 import UIKit
+import SwiftUI
 
+struct MyView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = FoodSearchViewController
+    
+    func makeUIViewController(context: Context) -> FoodSearchViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "FoodSearch") as! FoodSearchViewController
+        
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: FoodSearchViewController, context: Context) {
+        // Updates the state of the specified view controller with new information from SwiftUI.
+        
+    }
+}
 class FoodSearchViewController: UIViewController, UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var foodResultsTable: UITableView!
+   
+     @IBOutlet weak var foodResultsTable: UITableView!
     
     let searchController = UISearchController()
     
     var food: [FoodMacros] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.parent?.navigationItem.title = ""
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
