@@ -28,6 +28,8 @@
 		9B90165D2A060C1C00EE580C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90165B2A060C1C00EE580C /* LaunchScreen.storyboard */; };
 		9BB30B7F2A6E134200FD49D6 /* FoodSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */; };
 		9BB30B812A6E136600FD49D6 /* FoodBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB30B802A6E136600FD49D6 /* FoodBreakdownViewController.swift */; };
+		9BE4F02A2AF4741C005F22F1 /* FoodSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */; };
+		9BE4F02C2AF48897005F22F1 /* FoodBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		9B90165E2A060C1C00EE580C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewController.swift; sourceTree = "<group>"; };
 		9BB30B802A6E136600FD49D6 /* FoodBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBreakdownViewController.swift; sourceTree = "<group>"; };
+		9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearch.swift; sourceTree = "<group>"; };
+		9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBreakdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,8 @@
 				9B1F2A572A5BAF4A00795022 /* OnBoarding */,
 				9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */,
 				9B7AD3342AF077A5008DB059 /* HomeScreen.swift */,
+				9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */,
+				9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */,
 				9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */,
 				9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */,
 				9B64762C2A734A9D0001036A /* FoodSearchTableViewCell.swift */,
@@ -290,6 +296,7 @@
 				9B89E5FC2A7331F000CDEE04 /* TableViewCell.swift in Sources */,
 				9B6E04882A53CF9D00379104 /* FoodMacros.swift in Sources */,
 				9B53DF262A63BE4D002270B1 /* CalorieSelectViewController.swift in Sources */,
+				9BE4F02C2AF48897005F22F1 /* FoodBreakdown.swift in Sources */,
 				9BB30B812A6E136600FD49D6 /* FoodBreakdownViewController.swift in Sources */,
 				9B10775E2A6F3DA000721ACA /* DataModel.xcdatamodeld in Sources */,
 				9B6E048C2A53CFCF00379104 /* MacroController.swift in Sources */,
@@ -301,6 +308,7 @@
 				9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */,
 				9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */,
 				9B20B5982A12DF0D001BCAB9 /* StyleGuide.swift in Sources */,
+				9BE4F02A2AF4741C005F22F1 /* FoodSearch.swift in Sources */,
 				9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */,
 				9BB30B7F2A6E134200FD49D6 /* FoodSearchViewController.swift in Sources */,
 				9B1077602A70691F00721ACA /* CoreDataManager.swift in Sources */,
@@ -424,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -478,7 +486,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -503,7 +511,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +540,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

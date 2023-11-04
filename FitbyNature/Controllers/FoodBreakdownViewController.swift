@@ -6,7 +6,22 @@
 //
 
 import UIKit
+import SwiftUI
 
+struct MyBreakdownView: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: FoodBreakdownViewController, context: Context) {
+        
+    }
+    
+    typealias UIViewControllerType = FoodBreakdownViewController
+    
+    func makeUIViewController(context: Context) -> FoodBreakdownViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "FoodBreakdown") as! FoodBreakdownViewController
+        
+        return vc
+    }
+}
 class FoodBreakdownViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var foodLabel: UILabel!

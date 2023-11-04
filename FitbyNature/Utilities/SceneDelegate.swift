@@ -26,8 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if (UserDefaults.standard.value(forKey: "name") as? String) == nil {
             vc = storyboard.instantiateViewController(withIdentifier: "OnBoardingVC")
         } else {
-            vc = UIHostingController(rootView: HomeScreen().environment(\.managedObjectContext, context))
-//            vc = storyboard.instantiateInitialViewController()!
+            vc = UIHostingController(rootView: HomeScreen()
+                .environment(\.managedObjectContext, context))
         }
         
         window?.rootViewController = vc

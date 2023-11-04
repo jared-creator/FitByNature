@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct FoodMacros: Codable {
+struct FoodMacros: Codable, Identifiable {
+    var id = UUID()
     var name: String
     var calories: Double
     var servingSize: Double
@@ -33,7 +34,7 @@ struct FoodMacros: Codable {
         case cholesterol = "cholesterol_mg"
         case protein = "protein_g"
     }
-     func getMacro() -> [Any] {
+     func getMacro() -> [Double] {
         let macroArray = [sugar, fiber, sodium, potassium, fatSaturated, fatTotal, cholesterol]
         return macroArray
     }

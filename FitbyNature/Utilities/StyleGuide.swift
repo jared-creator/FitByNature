@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class StyleGuide {
     
@@ -51,6 +52,19 @@ class StyleGuide {
         button.layer.borderColor = UIColor.darkGray.cgColor
         button.layer.cornerRadius = 17.0
         button.tintColor = UIColor.white
+    }
+    
+    struct SwiftUIButton: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .padding(10)
+                .background(Color(red: 131/255, green: 81/255, blue: 81/255))
+                .tint(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 15.0))
+                .scaleEffect(configuration.isPressed ? 1.7 : 1)
+                .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+                
+        }
     }
     
 }

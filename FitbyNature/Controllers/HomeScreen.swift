@@ -6,29 +6,32 @@
 //
 
 import SwiftUI
-import Foundation
 
 struct HomeScreen: View {
     
     @State private var foodCalories = 0
-    @State private var progress: CGFloat = 0.2
+    @State private var progress: CGFloat = 0.0
     @State private var showingSearch = false
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<Person>
     @FetchRequest(sortDescriptors: []) var foods: FetchedResults<Food>
     
-    var totalCalories: Double = 0.0
+    @State private var totalCalories: Double = 0.0
     
     var body: some View {
+        ForEach(foods) { food in
+           
+        }
             VStack {
                 Text("Today")
                     .font(.custom("Hiragino Maru Gothic ProN W4", size: 30))
                     .foregroundColor(Color(uiColor: UIColor(red: 0.514, green: 0.318, blue: 0.318, alpha: 1)))
                 
                 Spacer(minLength: 30)
+                
                 CircularProgressView(progress: progress)
-                    .frame(width: 100, height: 50) // adjust size as needed
+                    .frame(width: 100, height: 50)
                 
                 Spacer(minLength: 40)
                 
@@ -41,10 +44,10 @@ struct HomeScreen: View {
                 NavigationStack {
                     List {
                         ForEach(foods) { food in
-                            
                             HStack {
                                 let sameDay = sameDay(date: food.time!)
                                 let foodDate = dateFormatter(date: food.time!)
+                               
                                 
                                 if sameDay == true {
                                     
@@ -63,6 +66,15 @@ struct HomeScreen: View {
                         .onDelete(perform: deleteFood)
                         .listRowBackground((Color(uiColor: UIColor(red: 251/255, green: 230/255, blue: 211/255, alpha: 1))))
                     }
+                    .onChange(of: foods.count, {
+                        if foods.count > 0 {
+                            addCalories()
+                            caloriesLeft()
+                            animateCircle()
+                        } else {
+                            caloriesLeft()
+                        }
+                    })
                     .scrollContentBackground(.hidden)
                     .background(Color(uiColor: UIColor(red: 251/255, green: 230/255, blue: 211/255, alpha: 1)))
                     .toolbar {
@@ -75,22 +87,46 @@ struct HomeScreen: View {
                         }
                     }
                 }.sheet(isPresented: $showingSearch, content: {
-                    MyView().ignoresSafeArea()
+                    FoodSearch().ignoresSafeArea()
                 })
+            
             }
+            .onAppear(perform: {
+                addCaloriesAtStart()
+                caloriesLeft()
+                animateCircle()
+            })
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(uiColor: UIColor(red: 251/255, green: 230/255, blue: 211/255, alpha: 1)))
     }
     
-    func caloriesLeft(calories: Int) -> Int64 {
+    func caloriesLeft()  {
         let caloriesLeft = CoreDataManager.shared.stats![0].calories - Int64(totalCalories)
-        let calories = caloriesLeft
-        return calories
+        foodCalories = Int(caloriesLeft)
+    }
+    
+    func addCaloriesAtStart() {
+        for i in 0..<foods.count {
+            totalCalories += foods[i].calories
+        }
+    }
+    
+    func addCalories() {
+        let endIndex = foods.endIndex - 1
+        totalCalories += foods[endIndex].calories
+    }
+    
+    func animateCircle() {
+        let currentCalories = (totalCalories) /
+        Double(CoreDataManager.shared.stats![0].calories)
+
+        progress = currentCalories
     }
     
     func deleteFood(at offsets: IndexSet) {
         for offset in offsets {
             let food = foods[offset]
+            totalCalories -= food.calories
                 moc.delete(food)
         }
             try? moc.save()
@@ -116,6 +152,8 @@ struct HomeScreen: View {
 }
 
 struct CircularProgressView: View {
+    let homeScreen = HomeScreen()
+    
     let progress: CGFloat
     
     var body: some View {
@@ -128,16 +166,16 @@ struct CircularProgressView: View {
             
             // Foreground or the actual progress bar
             Circle()
-                .trim(from: 0.0, to: min(progress, 1.0))
+                .trim(from: 0.0, to: progress)
                 .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
                 .foregroundColor(Color(UIColor(red: 1, green: 0.737, blue: 0.737, alpha: 1)))
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear, value: progress)
+                .animation(.linear(duration: 2), value: progress)
         }
     }
 }
-
+//
 //#Preview {
-//    HomeScreen()
+//    CircularProgressView(progress: 0.6)
 //        
 //}
