@@ -14,33 +14,34 @@ struct FoodSearch: View {
     
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(food) { food in
-                    NavigationLink {
-                        FoodBreakdown(food: [food])
-                    } label: {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(food.name.capitalized)
-                                    .font(.headline)
-                                Spacer()
-                                Text("\(food.calories, specifier: "%.1f")")
-                                
+        GeometryReader { geometry in
+            NavigationStack {
+                List {
+                    ForEach(food) { food in
+                        NavigationLink {
+                            FoodBreakdown(food: [food])
+                        } label: {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(food.name.capitalized)
+                                        .font(.headline)
+                                    Spacer()
+                                    Text("\(food.calories, specifier: "%.1f")")
+                                }
                             }
                         }
-                        
                     }
+                    .listRowBackground((Color(uiColor: UIColor(red: 251/255, green: 230/255, blue: 211/255, alpha: 1))))
                 }
-                
+                .scrollContentBackground(.hidden)
+                .background(Color(uiColor: UIColor(red: 251/255, green: 230/255, blue: 211/255, alpha: 1)))
+                .navigationTitle("Food")
             }
-            .navigationTitle("Food")
+            .searchable(text: $searchText)
+            .onAppear(perform: runSearch)
+            .onSubmit(of: .search, runSearch)
         }
-        .searchable(text: $searchText)
-        .onAppear(perform: runSearch)
-        .onSubmit(of: .search, runSearch)
     }
-    
     //    var filteredMessages: [FoodMacros] {
     //        if searchText.isEmpty {
     //            return food

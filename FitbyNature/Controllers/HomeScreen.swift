@@ -13,7 +13,6 @@ struct HomeScreen: View {
     @State private var progress: CGFloat = 0.0
     @State private var showingSearch = false
     
-    @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var user: FetchedResults<Person>
     @FetchRequest(sortDescriptors: []) var foods: FetchedResults<Food>
     
@@ -53,11 +52,14 @@ struct HomeScreen: View {
                                     
                                     Text("\(foodDate)")
                                         .font(.callout)
+                                        .foregroundStyle(.black)
                                     Text("\(food.name?.capitalized ?? "")")
+                                        .foregroundStyle(.black)
                                     Spacer()
                                     Text("\(food.calories, specifier: "%.1f")")
-                                    
+                                        .foregroundStyle(.black)
                                 } else {
+                                    
                                     Text("")
                                 }
                             }
@@ -73,6 +75,7 @@ struct HomeScreen: View {
                             animateCircle()
                         } else {
                             caloriesLeft()
+                            animateCircle()
                         }
                     })
                     .scrollContentBackground(.hidden)
@@ -103,6 +106,7 @@ struct HomeScreen: View {
     func caloriesLeft()  {
         let caloriesLeft = CoreDataManager.shared.stats![0].calories - Int64(totalCalories)
         foodCalories = Int(caloriesLeft)
+        print(caloriesLeft)
     }
     
     func addCaloriesAtStart() {
@@ -127,9 +131,9 @@ struct HomeScreen: View {
         for offset in offsets {
             let food = foods[offset]
             totalCalories -= food.calories
-                moc.delete(food)
+            CoreDataManager.shared.deleteFood(food: food)
         }
-            try? moc.save()
+        try? CoreDataManager.shared.save()
     }
 
     func dateFormatter(date: Date) -> String {
@@ -152,7 +156,6 @@ struct HomeScreen: View {
 }
 
 struct CircularProgressView: View {
-    let homeScreen = HomeScreen()
     
     let progress: CGFloat
     

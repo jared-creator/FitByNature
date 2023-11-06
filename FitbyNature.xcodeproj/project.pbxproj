@@ -11,23 +11,17 @@
 		9B1077602A70691F00721ACA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B10775F2A70691F00721ACA /* CoreDataManager.swift */; };
 		9B1F2A562A5A6E2200795022 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F2A552A5A6E2200795022 /* WelcomeScreenViewController.swift */; };
 		9B20B5982A12DF0D001BCAB9 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B20B5972A12DF0D001BCAB9 /* StyleGuide.swift */; };
-		9B2447E22A744F8500118509 /* FoodBreakdownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2447E12A744F8500118509 /* FoodBreakdownTableViewCell.swift */; };
 		9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2AAD052A45110B0002959A /* DailyCalorieBreakdown.swift */; };
 		9B53DF262A63BE4D002270B1 /* CalorieSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53DF252A63BE4D002270B1 /* CalorieSelectViewController.swift */; };
-		9B64762D2A734A9D0001036A /* FoodSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64762C2A734A9D0001036A /* FoodSearchTableViewCell.swift */; };
 		9B6E04882A53CF9D00379104 /* FoodMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E04872A53CF9D00379104 /* FoodMacros.swift */; };
 		9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E04892A53CFC300379104 /* ResponseModels.swift */; };
 		9B6E048C2A53CFCF00379104 /* MacroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E048B2A53CFCF00379104 /* MacroController.swift */; };
-		9B6E048E2A53D1FB00379104 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */; };
 		9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AD3342AF077A5008DB059 /* HomeScreen.swift */; };
-		9B89E5FC2A7331F000CDEE04 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */; };
 		9B9016512A060C1A00EE580C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9016502A060C1A00EE580C /* AppDelegate.swift */; };
 		9B9016532A060C1A00EE580C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9016522A060C1A00EE580C /* SceneDelegate.swift */; };
 		9B9016582A060C1A00EE580C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9016562A060C1A00EE580C /* Main.storyboard */; };
 		9B90165A2A060C1C00EE580C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B9016592A060C1C00EE580C /* Assets.xcassets */; };
 		9B90165D2A060C1C00EE580C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B90165B2A060C1C00EE580C /* LaunchScreen.storyboard */; };
-		9BB30B7F2A6E134200FD49D6 /* FoodSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */; };
-		9BB30B812A6E136600FD49D6 /* FoodBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB30B802A6E136600FD49D6 /* FoodBreakdownViewController.swift */; };
 		9BE4F02A2AF4741C005F22F1 /* FoodSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */; };
 		9BE4F02C2AF48897005F22F1 /* FoodBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */; };
 /* End PBXBuildFile section */
@@ -47,17 +41,13 @@
 		9B10775F2A70691F00721ACA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "/Users/jaredmurray/Desktop/Programming/Ios-Projects/prototype/FitbyNature/Models/CoreData/CoreDataManager.swift"; sourceTree = "<absolute>"; };
 		9B1F2A552A5A6E2200795022 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		9B20B5972A12DF0D001BCAB9 /* StyleGuide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
-		9B2447E12A744F8500118509 /* FoodBreakdownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBreakdownTableViewCell.swift; sourceTree = "<group>"; };
 		9B2AAD052A45110B0002959A /* DailyCalorieBreakdown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyCalorieBreakdown.swift; sourceTree = "<group>"; };
 		9B2E9C772AB2016500351EB1 /* prototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B53DF252A63BE4D002270B1 /* CalorieSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalorieSelectViewController.swift; path = "/Users/jaredmurray/Desktop/Programming/Ios-Projects/prototype/FitbyNature/Controllers/OnBoarding/CalorieSelectViewController.swift"; sourceTree = "<absolute>"; };
-		9B64762C2A734A9D0001036A /* FoodSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchTableViewCell.swift; sourceTree = "<group>"; };
 		9B6E04872A53CF9D00379104 /* FoodMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMacros.swift; sourceTree = "<group>"; };
 		9B6E04892A53CFC300379104 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		9B6E048B2A53CFCF00379104 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
-		9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		9B7AD3342AF077A5008DB059 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		9B90164D2A060C1A00EE580C /* prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9016502A060C1A00EE580C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9016522A060C1A00EE580C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,8 +55,6 @@
 		9B9016592A060C1C00EE580C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B90165C2A060C1C00EE580C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B90165E2A060C1C00EE580C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchViewController.swift; sourceTree = "<group>"; };
-		9BB30B802A6E136600FD49D6 /* FoodBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBreakdownViewController.swift; sourceTree = "<group>"; };
 		9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearch.swift; sourceTree = "<group>"; };
 		9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodBreakdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,15 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				9B1F2A572A5BAF4A00795022 /* OnBoarding */,
-				9B6E048D2A53D1FB00379104 /* HomeScreenViewController.swift */,
 				9B7AD3342AF077A5008DB059 /* HomeScreen.swift */,
 				9BE4F0292AF4741C005F22F1 /* FoodSearch.swift */,
 				9BE4F02B2AF48897005F22F1 /* FoodBreakdown.swift */,
-				9B89E5FB2A7331F000CDEE04 /* TableViewCell.swift */,
-				9BB30B7E2A6E134100FD49D6 /* FoodSearchViewController.swift */,
-				9B64762C2A734A9D0001036A /* FoodSearchTableViewCell.swift */,
-				9BB30B802A6E136600FD49D6 /* FoodBreakdownViewController.swift */,
-				9B2447E12A744F8500118509 /* FoodBreakdownTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -293,24 +275,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B89E5FC2A7331F000CDEE04 /* TableViewCell.swift in Sources */,
 				9B6E04882A53CF9D00379104 /* FoodMacros.swift in Sources */,
 				9B53DF262A63BE4D002270B1 /* CalorieSelectViewController.swift in Sources */,
 				9BE4F02C2AF48897005F22F1 /* FoodBreakdown.swift in Sources */,
-				9BB30B812A6E136600FD49D6 /* FoodBreakdownViewController.swift in Sources */,
 				9B10775E2A6F3DA000721ACA /* DataModel.xcdatamodeld in Sources */,
 				9B6E048C2A53CFCF00379104 /* MacroController.swift in Sources */,
-				9B2447E22A744F8500118509 /* FoodBreakdownTableViewCell.swift in Sources */,
 				9B9016512A060C1A00EE580C /* AppDelegate.swift in Sources */,
 				9B1F2A562A5A6E2200795022 /* WelcomeScreenViewController.swift in Sources */,
-				9B6E048E2A53D1FB00379104 /* HomeScreenViewController.swift in Sources */,
-				9B64762D2A734A9D0001036A /* FoodSearchTableViewCell.swift in Sources */,
 				9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */,
 				9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */,
 				9B20B5982A12DF0D001BCAB9 /* StyleGuide.swift in Sources */,
 				9BE4F02A2AF4741C005F22F1 /* FoodSearch.swift in Sources */,
 				9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */,
-				9BB30B7F2A6E134200FD49D6 /* FoodSearchViewController.swift in Sources */,
 				9B1077602A70691F00721ACA /* CoreDataManager.swift in Sources */,
 				9B9016532A060C1A00EE580C /* SceneDelegate.swift in Sources */,
 			);
