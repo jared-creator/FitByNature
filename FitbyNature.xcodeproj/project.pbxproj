@@ -14,7 +14,6 @@
 		9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2AAD052A45110B0002959A /* DailyCalorieBreakdown.swift */; };
 		9B53DF262A63BE4D002270B1 /* CalorieSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B53DF252A63BE4D002270B1 /* CalorieSelectViewController.swift */; };
 		9B6E04882A53CF9D00379104 /* FoodMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E04872A53CF9D00379104 /* FoodMacros.swift */; };
-		9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E04892A53CFC300379104 /* ResponseModels.swift */; };
 		9B6E048C2A53CFCF00379104 /* MacroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6E048B2A53CFCF00379104 /* MacroController.swift */; };
 		9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AD3342AF077A5008DB059 /* HomeScreen.swift */; };
 		9B9016512A060C1A00EE580C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9016502A060C1A00EE580C /* AppDelegate.swift */; };
@@ -45,7 +44,6 @@
 		9B2E9C772AB2016500351EB1 /* prototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = prototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B53DF252A63BE4D002270B1 /* CalorieSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalorieSelectViewController.swift; path = "/Users/jaredmurray/Desktop/Programming/Ios-Projects/prototype/FitbyNature/Controllers/OnBoarding/CalorieSelectViewController.swift"; sourceTree = "<absolute>"; };
 		9B6E04872A53CF9D00379104 /* FoodMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMacros.swift; sourceTree = "<group>"; };
-		9B6E04892A53CFC300379104 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		9B6E048B2A53CFCF00379104 /* MacroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroController.swift; sourceTree = "<group>"; };
 		9B7AD3342AF077A5008DB059 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		9B90164D2A060C1A00EE580C /* prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +99,6 @@
 			children = (
 				9B3A292A2A64BD090033CE37 /* CoreData */,
 				9B6E04872A53CF9D00379104 /* FoodMacros.swift */,
-				9B6E04892A53CFC300379104 /* ResponseModels.swift */,
 				9B6E048B2A53CFCF00379104 /* MacroController.swift */,
 			);
 			path = Models;
@@ -283,7 +280,6 @@
 				9B9016512A060C1A00EE580C /* AppDelegate.swift in Sources */,
 				9B1F2A562A5A6E2200795022 /* WelcomeScreenViewController.swift in Sources */,
 				9B2AAD062A45110B0002959A /* DailyCalorieBreakdown.swift in Sources */,
-				9B6E048A2A53CFC300379104 /* ResponseModels.swift in Sources */,
 				9B20B5982A12DF0D001BCAB9 /* StyleGuide.swift in Sources */,
 				9BE4F02A2AF4741C005F22F1 /* FoodSearch.swift in Sources */,
 				9B7AD3352AF077A5008DB059 /* HomeScreen.swift in Sources */,

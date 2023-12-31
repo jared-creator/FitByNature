@@ -11,32 +11,33 @@ class MacroController {
     static let shared = MacroController()
     static let personStatsUpdate =
     Notification.Name("MacroController.personUpdated")
-        
-    var menu: [FoodMacros] = []
-    var query = ""
+    
     var grams = 100
     
-    func fetch(food: String, grams: Any?, completionHandler: @escaping ([FoodMacros]) -> Void) {
-        self.query = "\(self.grams)grams \(food)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        print(query)
-        let url = URL(string: "https://api.calorieninjas.com/v1/nutrition?query="+query)!
-        var request = URLRequest(url: url)
-        request.setValue("n0xEhStieYFlUP5aemGlMQ==gkIV2JT0zfexoip2", forHTTPHeaderField: "X-Api-Key")
-       
-        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
-            do {
-                let decoder = JSONDecoder()
-                let menuResponse = try decoder.decode(items.self, from: data)
-                self.menu = menuResponse.items
-                completionHandler(self.menu)
+    var foodMacro: [Foods] = []
+    var query = ""
+    
+    var menu: [Foods] = []
+    
+    func foodFetch(food: String, completionHandler: @escaping ([Foods]) -> Void) {
+        query = "\(food)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let decoder = JSONDecoder()
+        
+        let url = URL(string: "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=Zn52LCe2u6U93JFcHYnmt40hy145VmWlq57eRNxF&query=\(query)&pageSize=3")!
+        
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             
-            } catch {
-                print(error)
+            guard let data = data else { return }
+            
+            do {
+                let result = try decoder.decode(foods.self, from: data)
+                self.menu = result.foods
+                completionHandler(self.menu)
+            }
+            catch {
+                print("failed to convert \(error)")
             }
         }
-       
         task.resume()
     }
 }

@@ -106,7 +106,6 @@ struct HomeScreen: View {
     func caloriesLeft()  {
         let caloriesLeft = CoreDataManager.shared.stats![0].calories - Int64(totalCalories)
         foodCalories = Int(caloriesLeft)
-        print(caloriesLeft)
     }
     
     func addCaloriesAtStart() {

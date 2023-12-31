@@ -44,11 +44,10 @@ extension CoreDataManager {
         }
     }
     
-    func createFood(name: String, calories: Double, servingSize: Double, sugar: Double, fiber: Double, sodium: Double, potassium: Double, fatSaturated: Double, fatTotal: Double, cholesterol: Double, protein: Double, carbohydratesTotal: Double, time: Date) -> Food {
+    func createFood(name: String, calories: Double, sugar: Double, fiber: Double, sodium: Double, potassium: Double, fatSaturated: Double, fatTotal: Double, cholesterol: Double, protein: Double, carbohydratesTotal: Double, time: Date) -> Food {
         let food = Food(context: context)
         food.name = name
         food.calories = calories
-        food.servingSize = servingSize
         food.sugar = sugar
         food.fiber = fiber
         food.sodium = sodium

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FoodSearch: View {
-    @State private var food: [FoodMacros] = []
+    @State private var food: [Foods] = []
     
     @State private var searchText = ""
     
@@ -17,16 +17,20 @@ struct FoodSearch: View {
         GeometryReader { geometry in
             NavigationStack {
                 List {
-                    ForEach(food) { food in
+                    ForEach(food, id: \.id) { food in
                         NavigationLink {
-                            FoodBreakdown(food: [food])
+                            FoodBreakdown(foodDetail: food, food: [food])
                         } label: {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(food.name.capitalized)
                                         .font(.headline)
                                     Spacer()
-                                    Text("\(food.calories, specifier: "%.1f")")
+                                    ForEach(0..<food.macros.count, id: \.self) { macro in
+                                        if food.macros[macro].nutrientName == "Energy" {
+                                            Text("\(food.macros[macro].value, specifier: "%.2f")")
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -38,21 +42,13 @@ struct FoodSearch: View {
                 .navigationTitle("Food")
             }
             .searchable(text: $searchText)
-            .onAppear(perform: runSearch)
             .onSubmit(of: .search, runSearch)
         }
     }
-    //    var filteredMessages: [FoodMacros] {
-    //        if searchText.isEmpty {
-    //            return food
-    //        } else {
-    //            return food.filter { $0.text.localizedCaseInsensitiveContains(searchText) }
-    //        }
-    //    }
     
     func runSearch() {
         Task {
-            MacroController.shared.fetch(food: searchText, grams: nil) { menu in
+            MacroController.shared.foodFetch(food: searchText) { menu in
                 DispatchQueue.main.async {
                     self.food = menu
                 }
